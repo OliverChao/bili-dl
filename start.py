@@ -4,14 +4,21 @@ from Bili import resources
 # url = "https://www.bilibili.com/bangumi/play/ss6360/"
 url = "https://www.bilibili.com/bangumi/play/ep206639/"
 
+url = "https://www.bilibili.com/video/av55487804"
 
-g = resources.GatherDownloader(url=url)
+a = resources.SingleDownloader(url=url)
+
+# a._save_base_content_text()
+a._save_one_info_to_file()
+
+
+# g = resources.GatherDownloader(url=url)
  
-  # for i in g.gen_info():
-      # print(i)
+#   # for i in g.gen_info():
+#       # print(i)
  
-g._save_gen_info_to_file()
-g._save_base_content_text()
+# g._save_gen_info_to_file()
+# g._save_base_content_text()
 
 # a = resources.OneInGatherDownloader(url=url)
 # print(a.ep_signature)

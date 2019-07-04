@@ -41,9 +41,7 @@ class BaseDownloader(object):
     
     def __init__(self,url,videourl=None):
         self.baseVideourl = config.videourl if videourl is None else videourl
-
         self.url = url
-    
 
     def get(self):
         response = requests.get(self.url,headers=self.headers)
@@ -158,10 +156,23 @@ class SingleDownloader(BaseDownloader):
 
         g = re.search(r'<title.*?>(.*?)</title>', content)
         g2 = re.search(r'"baseUrl".*?/(\d*?)-', content)
-        self.name = g.groups()[0]
-        self.cid = g2.groups()[0]
-        self.vurl = self.form_url(self.cid)
+        try:
+            self.name = g.groups()[0]
+            self.cid = g2.groups()[0]
+            self.vurl = self.form_url(self.cid)
+        except AttributeError as e:
+            raise e
 
         return InfoTuple(None,self.cid, self.vurl,self.name,self.name)
 
-    def 
+
+    def _save_one_info_to_file(self):
+        file_name = '_single_info.txt'
+        info = self.create_one_info()
+        if info is None:
+            print('info is Noen, failed to write to file')
+            return False
+        with open(file_name, 'w') as f:
+            f.write(json.dumps(info))
+        return True
+        
