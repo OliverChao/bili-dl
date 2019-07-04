@@ -1,7 +1,9 @@
 import re
 import json
+from collections import namedtuple
 import requests
 from .Config import config
+
 
 class FileSaver(object):
     def __init__(self, file):
@@ -48,10 +50,11 @@ class BaseDownloader(object):
     def get_content(self):
         return self.get().text
 
-    def _save_text(self):
-        import os.path
-        import urllib.parse
-        file_name = os.path.basename(urllib.parse.urlparse(self.url)) + '.txt'
+    def _save_base_content_text(self):
+        # import os.path
+        # import urllib.parse
+        # file_name = os.path.basename(urllib.parse.urlparse(self.url)) + '.txt'
+        file_name = 'base_content.txt'
         response = self.get()
         with open(file_name,'w') as f:
             f.write(response.text)
@@ -59,9 +62,12 @@ class BaseDownloader(object):
         return True
 
 
+
+InfoTuple = namedtuple('InfoTuple','cid vurl titleFormat longTitle')
+
 class GatherDownloader(BaseDownloader):
     def __init__(self,url, videourl=None):
-        self.videourl = config.videourl if videourl is None else videourl
+        self.baseVideourl = config.videourl if videourl is None else videourl
         super().__init__(url)
         pass
     
@@ -82,7 +88,7 @@ class GatherDownloader(BaseDownloader):
 
             vurl = self._form_url(cid)
 
-            yield (cid,vurl,titleFormat,longTitle)
+            yield InfoTuple(cid,vurl,titleFormat,longTitle)
 
     
     def _form_url(self,cid):
@@ -91,8 +97,23 @@ class GatherDownloader(BaseDownloader):
         pm1 = str(cid)[-2:]
         pm2 = str(cid)[-4:-2]
         pm4=pm3 = str(cid)
-        vurl = self.videourl.format(pm1,pm2,pm3,pm4)
+        vurl = self.baseVideourl.format(pm1,pm2,pm3,pm4)
         return vurl
+
+    def _save_gen_info_to_file(self):
+        # import os.path
+        # import urllib.parse
+        # file_name = os.path.basename(urllib.parse.urlparse(self.url).path)
+        # file_name = os.path.basename(urllib.parse.urlparse(self.url).path) + '_vinfo.txt'
+        file_name = '_vinfo.txt'
+        # print(file_name)
+        with open(file_name, 'w') as f:
+            for i in self.gen_info():
+                f.write(json.dumps(i))
+                f.write('\n')
+        
+        print('save to {}'.format(file_name))
+
 
 
 class SingleDownloader(BaseDownloader):
