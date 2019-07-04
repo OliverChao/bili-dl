@@ -64,9 +64,18 @@ class BaseDownloader(object):
         print('save to {}'.format(file_name))
         return True
 
+    def form_url(self,cid):
+        if cid is None:
+            return None
+        pm1 = str(cid)[-2:]
+        pm2 = str(cid)[-4:-2]
+        pm4=pm3 = str(cid)
+        vurl = self.baseVideourl.format(pm1,pm2,pm3,pm4)
+        return vurl
 
 
-InfoTuple = namedtuple('InfoTuple','cid vurl titleFormat longTitle')
+
+InfoTuple = namedtuple('InfoTuple','ep_id cid vurl titleFormat longTitle')
 
 class GatherDownloader(BaseDownloader):
     def __init__(self,url, videourl=None):
@@ -87,20 +96,11 @@ class GatherDownloader(BaseDownloader):
             cid = v.get('cid',None)
             titleFormat = v.get('titleFormat',None)
             longTitle = v.get('longTitle',None)
+            ep_id = v.get('id',None)
+            vurl = self.form_url(cid)
 
-            vurl = self._form_url(cid)
+            yield InfoTuple(ep_id,cid,vurl,titleFormat,longTitle)
 
-            yield InfoTuple(cid,vurl,titleFormat,longTitle)
-
-    
-    def _form_url(self,cid):
-        if cid is None:
-            return None
-        pm1 = str(cid)[-2:]
-        pm2 = str(cid)[-4:-2]
-        pm4=pm3 = str(cid)
-        vurl = self.baseVideourl.format(pm1,pm2,pm3,pm4)
-        return vurl
 
     def _save_gen_info_to_file(self):
         # import os.path
@@ -118,12 +118,50 @@ class GatherDownloader(BaseDownloader):
         return True
 
 
+class OneInGatherDownloader(GatherDownloader):
+    def __init__(self,url,videourl=None):
+        sp = url.split('/')
+        self.ep_signature = sp[-1] if sp[-1] else sp[-2]
+        
+        self.isinital = False if self.ep_signature.startswith('ep') else True
+
+        super().__init__(url,videourl)
+
+
+    def create_one_info(self):
+        if self.isinital:
+            return next(self.gen_info())
+        
+        for i in self.gen_info():
+            if self.ep_signature.endswith(str(i.ep_id)):
+                return i
+        return None
+    
+
+    def _save_one_info_to_file(self):
+        file_name = '_one_info.txt'
+        info = self.create_one_info()
+        if info is None:
+            print('info is Noen, failed to write to file')
+            return False
+        with open(file_name, 'w') as f:
+            f.write(json.dumps(info))
+        return True
+
+
 class SingleDownloader(BaseDownloader):
     def __init__(self, url, videourl=None):
         super().__init__(url,videourl)
     
+    def create_one_info(self):
+        content = self.get_content()
 
-    pass
+        g = re.search(r'<title.*?>(.*?)</title>', content)
+        g2 = re.search(r'"baseUrl".*?/(\d*?)-', content)
+        self.name = g.groups()[0]
+        self.cid = g2.groups()[0]
+        self.vurl = self.form_url(self.cid)
 
+        return InfoTuple(None,self.cid, self.vurl,self.name,self.name)
 
-
+    def 
