@@ -38,7 +38,10 @@ class BaseDownloader(object):
     headers = {
         'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.90 Safari/537.36'
     }
-    def __init__(self,url):
+    
+    def __init__(self,url,videourl=None):
+        self.baseVideourl = config.videourl if videourl is None else videourl
+
         self.url = url
     
 
@@ -67,8 +70,7 @@ InfoTuple = namedtuple('InfoTuple','cid vurl titleFormat longTitle')
 
 class GatherDownloader(BaseDownloader):
     def __init__(self,url, videourl=None):
-        self.baseVideourl = config.videourl if videourl is None else videourl
-        super().__init__(url)
+        super().__init__(url,videourl)
         pass
     
     def _vurl_info(self):
@@ -113,10 +115,14 @@ class GatherDownloader(BaseDownloader):
                 f.write('\n')
         
         print('save to {}'.format(file_name))
-
+        return True
 
 
 class SingleDownloader(BaseDownloader):
+    def __init__(self, url, videourl=None):
+        super().__init__(url,videourl)
+    
+
     pass
 
 
