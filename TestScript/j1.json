@@ -1,0 +1,38 @@
+{
+    "code": 0,
+    "message": "0",
+    "result": {
+        "accept_format": "hdflv2,flv,flv720,flv480,mp4",
+        "code": 0,
+        "durl": [{
+            "size": 202293352,
+            "ahead": "EhA=",
+            "length": 755776,
+            "vhead": "AWQAKP/hABhnZAAorNlAeAIn5YQAAA+kAALuADxgxlgBAARo6+8s",
+            "backup_url": ["http://cn-zjjh2-cmcc-v-04.acgvideo.com/upgcxcode/77/66/47506677/47506677_da1-1-80.flv?expires=1562301600&platform=pc&ssig=uLGB2JBPMrVOkfuCOy_TEQ&oi=1879473323&trid=4496d231eff643b195557cec938339f0p&nfb=maPYqpoel5MI3qOUX6YpRA==&nfc=1", "http://cn-gslz-cmcc-v-04.acgvideo.com/upgcxcode/77/66/47506677/47506677_da1-1-80.flv?expires=1562301600&platform=pc&ssig=uLGB2JBPMrVOkfuCOy_TEQ&oi=1879473323&trid=4496d231eff643b195557cec938339f0p&nfb=maPYqpoel5MI3qOUX6YpRA==&nfc=1"],
+            "url": "http://cn-sdjn3-cmcc-bcache-15.acgvideo.com/upgcxcode/77/66/47506677/47506677_da1-1-80.flv?e=ig8euxZM2rNcNbTj7zUVhoMj7buBhwdEto8g5X10ugNcXBlqNxHxNEVE5XREto8KqJZHUa6m5J0SqE85tZvEuENvNo8g2ENvNo8i8o859r1qXg8xNEVE5XREto8GuFGv2U7SuxI72X6fTr859r1qXg8gNEVE5XREto8z5JZC2X2gkX5L5F1eTX1jkXlsTXHeux_f2o859IB_&deadline=1562301641&gen=playurl&nbs=1&oi=1879473323&os=bcache&platform=pc&trid=4496d231eff643b195557cec938339f0p&uipk=5&upsig=4f739a46b1e86843aaec7d7a71e56693&uparams=e,deadline,gen,nbs,oi,os,platform,trid,uipk",
+            "order": 1,
+            "md5": ""
+        }],
+        "seek_param": "start",
+        "is_preview": 0,
+        "no_rexcode": 0,
+        "format": "flv",
+        "fnval": 0,
+        "video_project": true,
+        "fnver": 0,
+        "message": "",
+        "type": "FLV",
+        "accept_quality": [112, 80, 64, 32, 16],
+        "bp": 0,
+        "quality": 80,
+        "timelength": 755776,
+        "result": "suee",
+        "seek_type": "offset",
+        "has_paid": false,
+        "from": "local",
+        "video_codecid": 7,
+        "accept_description": ["高清 1080P+", "高清 1080P", "高清 720P", "清晰 480P", "流畅 360P"],
+        "status": 2
+    }
+}

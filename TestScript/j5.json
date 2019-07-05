@@ -1,0 +1,38 @@
+{
+    "code": 0,
+    "message": "0",
+    "result": {
+        "accept_format": "flv,flv720,flv480,mp4",
+        "code": 0,
+        "durl": [{
+            "size": 88742348,
+            "ahead": "EZA=",
+            "length": 338704,
+            "vhead": "AWQAKP/hABpnZAAorNlAeAIn5YQAAAMABAAAAwDIPGDGWAEABGjr7yw=",
+            "backup_url": ["http://cn-hbxy-cmcc-v-09.acgvideo.com/upgcxcode/52/90/74109052/74109052-1-80.flv?expires=1562302200&platform=pc&ssig=j77-yggCchuz9wkk4uDERQ&oi=1879473323&trid=738e440c8a54414cb1a7b8b2118e12cfp&nfb=maPYqpoel5MI3qOUX6YpRA==&nfc=1", "http://cn-jxnc2-cmcc-v-02.acgvideo.com/upgcxcode/52/90/74109052/74109052-1-80.flv?expires=1562302200&platform=pc&ssig=j77-yggCchuz9wkk4uDERQ&oi=1879473323&trid=738e440c8a54414cb1a7b8b2118e12cfp&nfb=maPYqpoel5MI3qOUX6YpRA==&nfc=1"],
+            "url": "http://cn-sdjn3-cmcc-bcache-06.acgvideo.com/upgcxcode/52/90/74109052/74109052-1-80.flv?e=ig8euxZM2rNcNbTB7WdVhoMj7WUVhwdEto8g5X10ugNcXBlqNxHxNEVE5XREto8KqJZHUa6m5J0SqE85tZvEuENvNo8g2ENvNo8i8o859r1qXg8xNEVE5XREto8GuFGv2U7SuxI72X6fTr859r1qXg8gNEVE5XREto8z5JZC2X2gkX5L5F1eTX1jkXlsTXHeux_f2o859IB_&deadline=1562302292&gen=playurl&nbs=1&oi=1879473323&os=bcache&platform=pc&trid=738e440c8a54414cb1a7b8b2118e12cfp&uipk=5&upsig=30db5bd0eb99b16324ae36dd7161f2dd&uparams=e,deadline,gen,nbs,oi,os,platform,trid,uipk",
+            "order": 1,
+            "md5": ""
+        }],
+        "seek_param": "start",
+        "is_preview": 0,
+        "no_rexcode": 0,
+        "format": "flv",
+        "fnval": 0,
+        "video_project": true,
+        "fnver": 0,
+        "message": "",
+        "type": "FLV",
+        "accept_quality": [80, 64, 32, 16],
+        "bp": 0,
+        "quality": 80,
+        "timelength": 338704,
+        "result": "suee",
+        "seek_type": "offset",
+        "has_paid": false,
+        "from": "local",
+        "video_codecid": 7,
+        "accept_description": ["高清 1080P", "高清 720P", "清晰 480P", "流畅 360P"],
+        "status": 2
+    }
+}
