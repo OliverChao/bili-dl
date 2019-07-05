@@ -35,9 +35,8 @@ class Aria2cFileSaver(FileSaver):
 
 
 class BaseDownloader(object):
-    headers = {
-        'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.90 Safari/537.36'
-    }
+    
+    headers = config.headers
     
     def __init__(self,url,videourl=None):
         self.baseVideourl = config.videourl if videourl is None else videourl
@@ -155,7 +154,9 @@ class SingleDownloader(BaseDownloader):
         content = self.get_content()
 
         g = re.search(r'<title.*?>(.*?)</title>', content)
-        g2 = re.search(r'"baseUrl".*?/(\d*?)-', content)
+        # g2 = re.search(r'"baseUrl".*?/(\d*?)-', content)
+        g2 = re.search(r'"(?:base)?[U,u]rl".*?/(\d*?)-',content)
+
         try:
             self.name = g.groups()[0]
             self.cid = g2.groups()[0]
@@ -175,4 +176,3 @@ class SingleDownloader(BaseDownloader):
         with open(file_name, 'w') as f:
             f.write(json.dumps(info))
         return True
-        

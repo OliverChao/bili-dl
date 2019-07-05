@@ -1,7 +1,7 @@
 import re
 import requests
 
-with open('a3.txt','r')as f:
+with open('a4.txt','r')as f:
     content = f.read()
 
 
@@ -9,6 +9,7 @@ with open('a3.txt','r')as f:
 g = re.search(r'<title.*?>(.*?)</title>', content)
 
 # "baseUrl":"http://upos-hz-mirrorcosu.acgvideo.com/upgcxcode/21/56/99945621/99945621-1-30015.m4s?
-g2 = re.search(r'"baseUrl".*?/(\d*?)-',content)
-print(g.groups()[0])
+g2 = re.search(r'"(?:base)?[U,u]rl".*?/(\d*?)-',content)
+
+# print(g.groups()[0])
 print(g2.groups()[0])

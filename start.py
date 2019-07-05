@@ -1,26 +1,25 @@
 from Bili import resources
-# print(resources.config.videourl)
-
-# url = "https://www.bilibili.com/bangumi/play/ss6360/"
-url = "https://www.bilibili.com/bangumi/play/ep206639/"
-
-url = "https://www.bilibili.com/video/av55487804"
-
-a = resources.SingleDownloader(url=url)
-
-# a._save_base_content_text()
-a._save_one_info_to_file()
+import argparse
+import requests
+import re
 
 
-# g = resources.GatherDownloader(url=url)
- 
-#   # for i in g.gen_info():
-#       # print(i)
- 
-# g._save_gen_info_to_file()
-# g._save_base_content_text()
+parser = argparse.ArgumentParser(  
+        description='crawl the bilibili in command line')   
+parser.add_argument('url',help='url')
+# parser.add_argument('-w','--windowns', help='if add this op, change the file to windows type',action='store_true')
 
-# a = resources.OneInGatherDownloader(url=url)
-# print(a.ep_signature)
-# a._save_one_info_to_file()
+# parser.add_argument('-g','--gather',help="download the whole videos in one serial")
+# parser.add_argument('-s','--single',help="dowbload one video")
 
+args = parser.parse_args()
+
+url = args.url
+
+r = resources.GatherDownloader(url=url)
+r._save_gen_info_to_file()
+r._save_base_content_text()
+
+# r = resources.SingleDownloader(url=url)
+# a = r.create_one_info()
+# print(a)
