@@ -27,7 +27,7 @@ else:
         quality = config.quality_dict[args.quality]
     except KeyError:
         quality = None
-print('quaility is <{}>  **None 为默认最高品质**'.format(quality))
+print('quaility is <{}>  **None :default highest quality..**'.format(quality))
 outfile_name = args.outfile
 if args.outfile:
     r_fileSaver = resources.Aria2cFileSaver(file=outfile_name)
