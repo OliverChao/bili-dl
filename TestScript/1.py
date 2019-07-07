@@ -10,6 +10,10 @@ url = 'https://api.bilibili.com/pgc/player/web/playurl/?ep_id=86866&qn=80&bsourc
 url = 'https://api.bilibili.com/pgc/player/web/playurl/?ep_id={}&qn=112&bsource='
 
 url = url.format(80016)
+url = url.format(57242380)
+url = url.format(9529383)
+
+
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.90 Safari/537.36'

@@ -106,7 +106,7 @@ class GatherDownloader(BaseDownloader):
             # yield InfoTuple(ep_id,cid,v_split_list,titleFormat,longTitle)
             yield d
 
-    def analyze_ep_id(self,ep_id):
+    def analyze_ep_id(self, ep_id):
         # url qn 为品质, 抓出来的 数据 >= qn
         url = 'https://api.bilibili.com/pgc/player/web/playurl/?ep_id={}&qn=112&bsource='
         url = url.format(ep_id)
