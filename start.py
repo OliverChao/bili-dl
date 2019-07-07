@@ -16,9 +16,14 @@ args = parser.parse_args()
 
 url = args.url
 
-r = resources.GatherDownloader(url=url)
-r._save_gen_info_to_file()
-r._save_base_content_text()
+# r = resources.GatherDownloader(url=url,quality=64)
+# r._save_gen_info_to_file()
+# r._save_base_content_text()
+
+# https://www.bilibili.com/bangumi/play/ss1699/
+# https://www.bilibili.com/bangumi/play/ep80040/
+r = resources.OneInGatherDownloader(url=url, quality=80)
+r._save_one_info_to_file()
 
 # r = resources.SingleDownloader(url=url)
 # a = r.create_one_info()

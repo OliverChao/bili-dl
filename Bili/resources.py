@@ -1,4 +1,5 @@
 import re
+import time
 import json
 from collections import namedtuple
 import requests
@@ -38,12 +39,13 @@ class BaseDownloader(object):
     
     headers = config.headers
     
-    def __init__(self,url,videourl=None):
-        self.baseVideourl = config.videourl if videourl is None else videourl
+    def __init__(self,url,quality=None):
+        self.quality = quality
+        self.baseVideourl = config.videourl
         self.url = url
 
     def get(self):
-        response = requests.get(self.url,headers=self.headers)
+        response = requests.get(self.url, headers=self.headers)
         # return response.text
         return response
     
@@ -61,22 +63,21 @@ class BaseDownloader(object):
         print('save to {}'.format(file_name))
         return True
 
-    def form_url(self,cid):
+    def form_url(self,cid,num,quality):
         if cid is None:
             return None
         pm1 = str(cid)[-2:]
         pm2 = str(cid)[-4:-2]
         pm4=pm3 = str(cid)
-        vurl = self.baseVideourl.format(pm1,pm2,pm3,pm4)
+        vurl = self.baseVideourl.format(pm1=pm1, pm2=pm2, cid=pm3, cid2=pm4 ,num=num, quality=quality)
         return vurl
-
 
 
 InfoTuple = namedtuple('InfoTuple','ep_id cid vurl titleFormat longTitle')
 
 class GatherDownloader(BaseDownloader):
-    def __init__(self,url, videourl=None):
-        super().__init__(url,videourl)
+    def __init__(self,url, quality=None):
+        super().__init__(url, quality)
         pass
     
     def _vurl_info(self):
@@ -90,21 +91,41 @@ class GatherDownloader(BaseDownloader):
         # print('{cid}: {titleFormat}: {longTitle}'.format(cid=v['cid'],titleFormat=v['titleFormat'],longTitle=v['longTitle']))
         vlist = self._vurl_info()
         for v in vlist:
-            cid = v.get('cid',None)
-            titleFormat = v.get('titleFormat',None)
-            longTitle = v.get('longTitle',None)
-            ep_id = v.get('id',None)
-            vurl = self.form_url(cid)
+            d={}
+            d['cid'] = v.get('cid',None)
+            d['titleFormat'] = v.get('titleFormat',None)
+            d['longTitle'] = v.get('longTitle',None)
+            d['ep_id'] = v.get('id',None)
+            self.analyze_ep_id(d['ep_id'])
+            d['v_split_list'] = []
 
-            yield InfoTuple(ep_id,cid,vurl,titleFormat,longTitle)
+            for i in range(self.split_num):
+                vurl = self.form_url(d['cid'], i+1, self.quality)
+                d['v_split_list'].append(vurl)
 
+            # yield InfoTuple(ep_id,cid,v_split_list,titleFormat,longTitle)
+            yield d
+
+    def analyze_ep_id(self,ep_id):
+        # url qn 为品质, 抓出来的 数据 >= qn
+        url = 'https://api.bilibili.com/pgc/player/web/playurl/?ep_id={}&qn=112&bsource='
+        url = url.format(ep_id)
+        # print('start {} at {}'.format(ep_id, time.ctime()))
+        response = requests.get(url=url,headers=self.headers)
+        js = json.loads(response.text)
+        qualityList = js['result']['accept_quality']
+        if self.quality is  None or self.quality not in qualityList:
+            self.quality = qualityList[0]
+
+        self.split_num = len(js['result']['durl'])
+        return self.split_num
 
     def _save_gen_info_to_file(self):
         # import os.path
         # import urllib.parse
         # file_name = os.path.basename(urllib.parse.urlparse(self.url).path)
         # file_name = os.path.basename(urllib.parse.urlparse(self.url).path) + '_vinfo.txt'
-        file_name = '_vinfo.txt'
+        file_name = '_vinfo.json'
         # print(file_name)
         with open(file_name, 'w') as f:
             for i in self.gen_info():
@@ -116,24 +137,23 @@ class GatherDownloader(BaseDownloader):
 
 
 class OneInGatherDownloader(GatherDownloader):
-    def __init__(self,url,videourl=None):
+    def __init__(self,url,quality=None):
         sp = url.split('/')
         self.ep_signature = sp[-1] if sp[-1] else sp[-2]
         
+        # 如果给 ss<num> 这样的url, 则直接给番剧的第一个数据, 如果是ep<num> 这样的url, 则下载 ep<num>
         self.isinital = False if self.ep_signature.startswith('ep') else True
 
-        super().__init__(url,videourl)
-
+        super().__init__(url, quality)
 
     def create_one_info(self):
         if self.isinital:
             return next(self.gen_info())
         
         for i in self.gen_info():
-            if self.ep_signature.endswith(str(i.ep_id)):
+            if self.ep_signature.endswith(str(i['ep_id'])):
                 return i
         return None
-    
 
     def _save_one_info_to_file(self):
         file_name = '_one_info.txt'
@@ -149,7 +169,7 @@ class OneInGatherDownloader(GatherDownloader):
 class SingleDownloader(BaseDownloader):
     def __init__(self, url, videourl=None):
         super().__init__(url,videourl)
-    
+
     def create_one_info(self):
         content = self.get_content()
 
@@ -163,9 +183,7 @@ class SingleDownloader(BaseDownloader):
             self.vurl = self.form_url(self.cid)
         except AttributeError as e:
             raise e
-
         return InfoTuple(None,self.cid, self.vurl,self.name,self.name)
-
 
     def _save_one_info_to_file(self):
         file_name = '_single_info.txt'

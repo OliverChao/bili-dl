@@ -1,0 +1,65 @@
+{
+    'code': 0,
+    'message': '0',
+    'result': {
+        'accept_format': 'flv,flv720,flv480,flv360',
+        'code': 0,
+        'durl': [{
+            'size': 43363717,
+            'ahead': '',
+            'length': 363905,
+            'vhead': '',
+            'backup_url': ['http://upos-hz-mirrorcosu.acgvideo.com/upgcxcode/18/64/3386418/3386418-1-32.flv?e=ig8euxZM2rNcNbNH7zUVhoMgnWuBhwdEto8g5X10ugNcXBlqNxHxNEVE5XREto8KqJZHUa6m5J0SqE85tZvEuENvNo8g2ENvNo8i8o859r1qXg8xNEVE5XREto8GuFGv2U7SuxI72X6fTr859r1qXg8gNEVE5XREto8z5JZC2X2gkX5L5F1eTX1jkXlsTXHeux_f2o859IB_&deadline=1562493727&gen=playurl&nbs=1&oi=1893745597&os=cosu&platform=pc&trid=9d1a36e24bf647789bb0357a68507557p&uipk=5&upsig=e247289e794e1afef613794cc60d761e&uparams=e,deadline,gen,nbs,oi,os,platform,trid,uipk'],
+            'url': 'http://upos-hz-mirrorbsyu.acgvideo.com/upgcxcode/18/64/3386418/3386418-1-32.flv?e=ig8euxZM2rNcNbNH7zUVhoMgnWuBhwdEto8g5X10ugNcXBlqNxHxNEVE5XREto8KqJZHUa6m5J0SqE85tZvEuENvNo8g2ENvNo8i8o859r1qXg8xNEVE5XREto8GuFGv2U7SuxI72X6fTr859r1qXg8gNEVE5XREto8z5JZC2X2gkX5L5F1eTX1jkXlsTXHeux_f2o859IB_&deadline=1562493727&gen=playurl&nbs=1&oi=1893745597&os=bsyu&platform=pc&trid=9d1a36e24bf647789bb0357a68507557p&uipk=5&upsig=c44945774f669dcd896c037f7f97bfbd&uparams=e,deadline,gen,nbs,oi,os,platform,trid,uipk',
+            'order': 1,
+            'md5': ''
+        }, {
+            'size': 26420453,
+            'ahead': '',
+            'length': 304512,
+            'vhead': '',
+            'backup_url': ['http://upos-hz-mirrorcosu.acgvideo.com/upgcxcode/18/64/3386418/3386418-2-32.flv?e=ig8euxZM2rNcNbN17WdVhoMghWUVhwdEto8g5X10ugNcXBlqNxHxNEVE5XREto8KqJZHUa6m5J0SqE85tZvEuENvNo8g2ENvNo8i8o859r1qXg8xNEVE5XREto8GuFGv2U7SuxI72X6fTr859r1qXg8gNEVE5XREto8z5JZC2X2gkX5L5F1eTX1jkXlsTXHeux_f2o859IB_&deadline=1562493727&gen=playurl&nbs=1&oi=1893745597&os=cosu&platform=pc&trid=9d1a36e24bf647789bb0357a68507557p&uipk=5&upsig=bcc4efbd59bc3f4ebe0c1c408a85097c&uparams=e,deadline,gen,nbs,oi,os,platform,trid,uipk'],
+            'url': 'http://upos-hz-mirrorks3u.acgvideo.com/upgcxcode/18/64/3386418/3386418-2-32.flv?e=ig8euxZM2rNcNbN17WdVhoMghWUVhwdEto8g5X10ugNcXBlqNxHxNEVE5XREto8KqJZHUa6m5J0SqE85tZvEuENvNo8g2ENvNo8i8o859r1qXg8xNEVE5XREto8GuFGv2U7SuxI72X6fTr859r1qXg8gNEVE5XREto8z5JZC2X2gkX5L5F1eTX1jkXlsTXHeux_f2o859IB_&deadline=1562493727&gen=playurl&nbs=1&oi=1893745597&os=ks3u&platform=pc&trid=9d1a36e24bf647789bb0357a68507557p&uipk=5&upsig=96c714ef7b4bf2fd4e25b7d170720aec&uparams=e,deadline,gen,nbs,oi,os,platform,trid,uipk',
+            'order': 2,
+            'md5': ''
+        }, {
+            'size': 44359484,
+            'ahead': '',
+            'length': 451201,
+            'vhead': '',
+            'backup_url': ['http://upos-hz-mirrorcosu.acgvideo.com/upgcxcode/18/64/3386418/3386418-3-32.flv?e=ig8euxZM2rNcNbNM7WdVhoMg7wUVhwdEto8g5X10ugNcXBlqNxHxNEVE5XREto8KqJZHUa6m5J0SqE85tZvEuENvNo8g2ENvNo8i8o859r1qXg8xNEVE5XREto8GuFGv2U7SuxI72X6fTr859r1qXg8gNEVE5XREto8z5JZC2X2gkX5L5F1eTX1jkXlsTXHeux_f2o859IB_&deadline=1562493727&gen=playurl&nbs=1&oi=1893745597&os=cosu&platform=pc&trid=9d1a36e24bf647789bb0357a68507557p&uipk=5&upsig=848ecbad2c6142a8f252e7b095a522dc&uparams=e,deadline,gen,nbs,oi,os,platform,trid,uipk'],
+            'url': 'http://upos-hz-mirrorbosu.acgvideo.com/upgcxcode/18/64/3386418/3386418-3-32.flv?e=ig8euxZM2rNcNbNM7WdVhoMg7wUVhwdEto8g5X10ugNcXBlqNxHxNEVE5XREto8KqJZHUa6m5J0SqE85tZvEuENvNo8g2ENvNo8i8o859r1qXg8xNEVE5XREto8GuFGv2U7SuxI72X6fTr859r1qXg8gNEVE5XREto8z5JZC2X2gkX5L5F1eTX1jkXlsTXHeux_f2o859IB_&deadline=1562493727&gen=playurl&nbs=1&oi=1893745597&os=bosu&platform=pc&trid=9d1a36e24bf647789bb0357a68507557p&uipk=5&upsig=357edc5a7288e133eeb1c39d83d25400&uparams=e,deadline,gen,nbs,oi,os,platform,trid,uipk',
+            'order': 3,
+            'md5': ''
+        }, {
+            'size': 30647803,
+            'ahead': '',
+            'length': 257964,
+            'vhead': '',
+            'backup_url': ['http://upos-hz-mirrorcosu.acgvideo.com/upgcxcode/18/64/3386418/3386418-4-32.flv?e=ig8euxZM2rNcNbNH7WdVhoMgnWUVhwdEto8g5X10ugNcXBlqNxHxNEVE5XREto8KqJZHUa6m5J0SqE85tZvEuENvNo8g2ENvNo8i8o859r1qXg8xNEVE5XREto8GuFGv2U7SuxI72X6fTr859r1qXg8gNEVE5XREto8z5JZC2X2gkX5L5F1eTX1jkXlsTXHeux_f2o859IB_&deadline=1562493727&gen=playurl&nbs=1&oi=1893745597&os=cosu&platform=pc&trid=9d1a36e24bf647789bb0357a68507557p&uipk=5&upsig=4b8d62fcff4d1d4ea4c532fe56944f5e&uparams=e,deadline,gen,nbs,oi,os,platform,trid,uipk'],
+            'url': 'http://upos-hz-mirrorkodou.acgvideo.com/upgcxcode/18/64/3386418/3386418-4-32.flv?e=ig8euxZM2rNcNbNH7WdVhoMgnWUVhwdEto8g5X10ugNcXBlqNxHxNEVE5XREto8KqJZHUa6m5J0SqE85tZvEuENvNo8g2ENvNo8i8o859r1qXg8xNEVE5XREto8GuFGv2U7SuxI72X6fTr859r1qXg8gNEVE5XREto8z5JZC2X2gkX5L5F1eTX1jkXlsTXHeux_f2o859IB_&deadline=1562493727&gen=playurl&nbs=1&oi=1893745597&os=kodou&platform=pc&trid=9d1a36e24bf647789bb0357a68507557p&uipk=5&upsig=7881636d471c669f1e7949af32c23b41&uparams=e,deadline,gen,nbs,oi,os,platform,trid,uipk',
+            'order': 4,
+            'md5': ''
+        }],
+        'seek_param': 'start',
+        'is_preview': 0,
+        'no_rexcode': 0,
+        'format': 'flv480',
+        'fnval': 0,
+        'video_project': True,
+        'fnver': 0,
+        'message': '',
+        'type': 'FLV',
+        'accept_quality': [80, 64, 32, 16],
+        'bp': 0,
+        'quality': 32,
+        'timelength': 1377582,
+        'result': 'suee',
+        'seek_type': 'offset',
+        'has_paid': False,
+        'from': 'local',
+        'video_codecid': 7,
+        'accept_description': ['高清 1080P', '高清 720P', '清晰 480P', '流畅 360P'],
+        'status': 2
+    }
+}

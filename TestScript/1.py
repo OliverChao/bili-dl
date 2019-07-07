@@ -6,9 +6,10 @@ url = 'https://api.bilibili.com/pgc/player/web/playurl?avid=29926006&cid=5213706
 
 url = 'https://api.bilibili.com/pgc/player/web/playurl/?ep_id=86866&qn=80&bsource='
 
-url = 'https://api.bilibili.com/pgc/player/web/playurl/?ep_id={}&qn=80&bsource='
+# 不加 qn 则为 默认 32
+url = 'https://api.bilibili.com/pgc/player/web/playurl/?ep_id={}&qn=112&bsource='
 
-url = url.format(262001)
+url = url.format(80016)
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.90 Safari/537.36'
@@ -16,4 +17,14 @@ headers = {
 
 response = requests.get(url=url,headers=headers)
 
-print(response.text)
+# print(response.text)
+js = json.loads(response.text)
+print(js)
+print(type(js))
+print()
+qualityList = js['result']['accept_quality']
+print(qualityList)
+print(type(qualityList))
+print(112 not in qualityList)
+print(len(js['result']['durl']))
+
