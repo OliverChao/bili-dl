@@ -119,10 +119,10 @@ class GatherDownloader(BaseDownloader):
         d['titleFormat'] = v.get('titleFormat',None)
         d['longTitle'] = v.get('longTitle',None)
         d['ep_id'] = v.get('id',None)
-        self.analyze_ep_id(d['ep_id'])
+        num = self.analyze_ep_id(d['ep_id'])
         d['v_split_list'] = []
 
-        for i in range(self.split_num):
+        for i in range(num):
             vurl = self.form_url(d['cid'], i+1, self.quality)
             d['v_split_list'].append(vurl)
         return d
@@ -135,12 +135,17 @@ class GatherDownloader(BaseDownloader):
         # print('start {} at {}'.format(ep_id, time.ctime()))
         response = requests.get(url=url,headers=self.headers)
         js = json.loads(response.text)
-        qualityList = js['result']['accept_quality']
-        if self.quality is  None or self.quality not in qualityList:
+        try:
+            qualityList = js['result']['accept_quality']
+        except KeyError: 
+            # 可能: {"code":-10403,"message":"大会员专享限制"}
+            print(response.text)
+            return 0
+        if self.quality is None or self.quality not in qualityList:
             self.quality = qualityList[0]
 
-        self.split_num = len(js['result']['durl'])
-        return self.split_num
+        split_num = len(js['result']['durl'])
+        return split_num
 
     def _save_gen_info_to_file(self):
         # import os.path
@@ -189,23 +194,61 @@ class OneInGatherDownloader(GatherDownloader):
 
 
 class SingleDownloader(BaseDownloader):
-    def __init__(self, url, videourl=None):
-        super().__init__(url,videourl)
+    def __init__(self, url, quality=None):
+        super().__init__(url, quality)
 
     def create_one_info(self):
-        content = self.get_content()
+        content = self.get_content()    
+        d = {}
+        playinfo = re.search(r'window\.__playinfo__.*?(\{.*?\}.*?)</script>', content, re.S)
+        
+        try:
+            js  = playinfo.groups()[0]
+        except AttributeError as e:
+            print('extract play info error')
+            raise e
+        
+        # print(js)
+        try:
+            data = json.loads(js)    
+        except json.decoder.JSONDecodeError as e:
+            print('json parse error when parse playinfo')
+            raise e
+        
+        qualityList = data['data']['accept_quality']
+        if self.quality is None or self.quality not in qualityList:
+            self.quality = qualityList[0]
+
+        try:
+            split_num = len(data['data']['durl'])
+        except KeyError as e:
+            split_num = 1
+        
+        
+
 
         g = re.search(r'<title.*?>(.*?)</title>', content)
         # g2 = re.search(r'"baseUrl".*?/(\d*?)-', content)
         g2 = re.search(r'"(?:base)?[U,u]rl".*?/(\d*?)-',content)
-
         try:
             self.name = g.groups()[0]
             self.cid = g2.groups()[0]
-            self.vurl = self.form_url(self.cid)
+            # self.vurl = self.form_url(self.cid)
         except AttributeError as e:
+            print('get name or cid error')
             raise e
-        return InfoTuple(None,self.cid, self.vurl,self.name,self.name)
+        else:
+            d['cid'] =self.cid
+            d['titleFormat'] = d['longTitle'] = self.name
+            d['ep_id'] = None
+            pass
+
+        d['v_split_list'] = []
+        for i in range(split_num):
+            d['v_split_list'].append( self.form_url(self.cid, i+1, self.quality) )
+
+        return d
+        # return InfoTuple(None,self.cid, self.vurl,self.name,self.name)
 
     def _save_one_info_to_file(self):
         file_name = '_single_info.txt'

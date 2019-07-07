@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Page-Enter" content="blendTrans(Duration=0.5)">
+<meta http-equiv="Page-Exit" content="blendTrans(Duration=0.5)">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>åºéå¦! - bilibili.com</title>
+<style type="text/css">
+body { vertical-align: middle; }
+div.center { position:absolute; top:50%; left:50%; margin:-25% 0 0 -320px; width:640px; min-height: 427px; padding: 0px; }
+div.errmsg { text-align:left; width:640px; line-height:150%;}
+a { text-decoration: none; color:red }
+.center{display: none}
+</style>
+<link rel="shortcut icon" href="//static.hdslb.com/images/favicon.ico">
+<link href="//static.hdslb.com/css/core-v5/page-core.css" rel="stylesheet">
+<link href="//static.hdslb.com/error/dist/error.css" rel="stylesheet">
+<script type="text/javascript">
+    var options={
+        type:'defaultError'
+    }
+</script>
+
+</head>
+<body style="direction: ltr;">
+
+<div class="z_top_container">
+    <div class="z_top">
+        <div class="z_header">
+            <div class="z_top_nav">
+                <ul>
+                    <li class="home">
+                        <a class="i-link" href="//www.bilibili.com/index.html">
+                            <span>ä¸»ç«</span>
+                        </a>
+                    </li>
+                    <li class="hbili">
+                        <a class="i-link" href="http://h.bilibili.com/" title="ç»å">ç»å</a>
+                    </li>
+                    <li class="b-gc" hasframe="true">
+                        <a class="i-link" href="//game.bilibili.com/" title="æ¸¸æä¸­å¿">æ¸¸æä¸­å¿</a>
+                        <div class="i_div game" data-frame="game"></div>
+                    </li>
+                    <li class="live" hasframe="true">
+                        <a class="i-link" target="_blank" href="//live.bilibili.com" title="ç´æ­">ç´æ­</a>
+                        <div class="i_div stream" data-frame="stream"></div>
+                    </li>
+                    <li class="b-zb">
+                        <a class="i-link" target="_blank" href="//bmall.bilibili.com/#!/" title="å¨è¾¹">å¨è¾¹</a>
+                    </li>
+                    <li style='display:none' class="b-ml">
+                        <a class="i-link" target="_blank" href="//bml.bilibili.com/index2016/?nav" title="BML">BML</a>
+                    </li>
+                    <li class="shouji">
+                        <a class="i-link" target="_blank" href="//app.bilibili.com" title="ç§»å¨ç«¯">ç§»å¨ç«¯</a>
+                        <div class="mobile-p-box">
+                            <div class="mobile-p-qrcode"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="uns_box">
+                <ul class="menu">
+                    <li id="i_menu_profile_btn" guest="no" class="u-i i_user" i_menu="#i_menu_profile">
+                        <a class="i-link" href="//space.bilibili.com/" target="_blank">
+                            <img class="i_face">
+                        </a>
+                        <div id="i_menu_profile" class="i_menu">
+                            <div class="i_menu_bg_t"></div>
+                            <div class="info clearfix">
+                                <div class="uname"></div>
+                                <div class="coin"></div>
+                            </div>
+                            <div class="member-menu-wrp">
+                                <ul class="member-menu">
+                                    <li>
+                                        <a href="https://account.bilibili.com/site/home" target="_blank" class="account">
+                                            <i class="b-icon b-icon-p-account"></i>
+                                            ä¸ªäººä¸­å¿
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://member.bilibili.com/v/#!/article" target="_blank" class="member">
+                                            <i class="b-icon b-icon-p-member"></i>
+                                            æç¨¿ç®¡ç
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://pay.bilibili.com/" target="_blank" class="wallet">
+                                            <i class="b-icon b-icon-p-wallet"></i>
+                                            Bå¸é±å
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="//live.bilibili.com/i" target="_blank" class="live">
+                                            <i class="b-icon b-icon-p-live"></i>
+                                            ç´æ­ä¸­å¿
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="member-bottom">
+                                <a class="logout" href="https://account.bilibili.com/login?act=exit">éåº</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="i_menu_become_vip" guest="no" i_menu="become_vip" class="u-i">
+                        <a class="i-link" href="//big.bilibili.com/site/big.html" target="_blank">æä¸ºå¤§ä¼å</a>
+                    </li>
+                    <li id="i_menu_community_msg_btn" guest="no" i_menu="community_msg" class="u-i">
+                        <a class="i-link" href="//message.bilibili.com" target="_blank">æ¶æ¯</a>
+                    </li>
+                    <li id="i_menu_msg_btn" guest="no" i_menu="#dyn_wnd" class="u-i">
+                        <div class="num" id="dynamic_num_total"></div>
+                        <a class="i-link" href="//www.bilibili.com/account/dynamic" target="_blank">å¨æ</a>
+                    </li>
+                    <li id="i_menu_fav_btn" guest="no" i_menu="#i_menu_fav" class="u-i">
+                        <a class="i-link" href="//space.bilibili.com/#!/favlist" target="_blank">æ¶èå¤¹</a>
+                    </li>
+                    <li id="i_menu_history_btn" guest="no" class="u-i">
+                        <a class="i-link" href="//www.bilibili.com/account/history">åå²</a>
+                    </li>
+                    <li id="i_menu_login_reg" guest="yes" class="u-i">
+                        <a id="i_menu_login_btn" class="i-link login" href="https://account.bilibili.com/login">
+                            <span>ç»å½</span>
+                        </a>
+                        <i class="s-line"></i>
+                        <a id="i_menu_register_btn" class="i-link reg" href="https://www.bilibili.com/register">
+                            <span>æ³¨å</span>
+                        </a>
+                    </li>
+                    <li class="u-i b-post">
+                        <a class="i-link" href="http://member.bilibili.com/v/video/submit.html" target="_blank">æ ç¨¿</a>
+                        <ul class="s-menu">
+                            <li>
+                                <a href="http://member.bilibili.com/v/video/submit.html" target="_blank">
+                                    <i class="b-icon b-icon-vp"></i>
+                                    <em>è§é¢æç¨¿</em>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://member.bilibili.com/v/#!/article" target="_blank">
+                                    <i class="b-icon b-icon-vm"></i>
+                                    <em>æç¨¿ç®¡ç</em>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://member.bilibili.com/v/" target="_blank">
+                                    <i class="b-icon b-icon-vc"></i>
+                                    <em>åä½ä¸­å¿</em>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>    
+
+    <div class="error-container">
+        <div class="error-panel server-error">
+            <img src="//static.hdslb.com/error/very_sorry.png">
+            <div>
+                <div class="left-panel">
+                    <a class="rollback-btn" >è¿åä¸ä¸é¡µ</a>
+                </div>
+                <div class="right-panel">
+                    <b>éè¯¯å·:</b> 403&nbsp;&nbsp;<br />
+                    <b>ç¨æ·IP:</b> 112.224.67.189<br />
+                    <b>è¯·æ±å°å:</b> http://www.bilibili.com/video/av30073747&nbsp;&nbsp; <br />
+                </div>
+            </div>
+        </div>
+        <div class="error-split">
+        </div>
+        <div class="error-manga">
+        </div>
+    </div>
+</body>
+<script type="text/javascript" charset="utf-8" src="//static.hdslb.com/js/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="//static.hdslb.com/js/core-v5/base.core.js"></script>
+<script type="text/javascript" charset="utf-8" src="//static.hdslb.com/error/dist/error.js"></script>
+<script type="text/javascript">
+    loadLoginStatus();
+</script>
+</html>
+
