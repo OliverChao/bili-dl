@@ -4,6 +4,7 @@ import json
 from collections import namedtuple
 import requests
 from .Config import config
+from concurrent import futures
 
 
 class FileSaver(object):
@@ -90,21 +91,42 @@ class GatherDownloader(BaseDownloader):
     def gen_info(self):
         # print('{cid}: {titleFormat}: {longTitle}'.format(cid=v['cid'],titleFormat=v['titleFormat'],longTitle=v['longTitle']))
         vlist = self._vurl_info()
-        for v in vlist:
-            d={}
-            d['cid'] = v.get('cid',None)
-            d['titleFormat'] = v.get('titleFormat',None)
-            d['longTitle'] = v.get('longTitle',None)
-            d['ep_id'] = v.get('id',None)
-            self.analyze_ep_id(d['ep_id'])
-            d['v_split_list'] = []
 
-            for i in range(self.split_num):
-                vurl = self.form_url(d['cid'], i+1, self.quality)
-                d['v_split_list'].append(vurl)
+        with futures.ThreadPoolExecutor(max_workers=20) as exectutor:
+            g = exectutor.map(self.create_one_info, vlist)
 
-            # yield InfoTuple(ep_id,cid,v_split_list,titleFormat,longTitle)
-            yield d
+        return g
+        
+        # for v in vlist:
+        #     d={}
+        #     d['cid'] = v.get('cid',None)
+        #     d['titleFormat'] = v.get('titleFormat',None)
+        #     d['longTitle'] = v.get('longTitle',None)
+        #     d['ep_id'] = v.get('id',None)
+        #     self.analyze_ep_id(d['ep_id'])
+        #     d['v_split_list'] = []
+
+        #     for i in range(self.split_num):
+        #         vurl = self.form_url(d['cid'], i+1, self.quality)
+        #         d['v_split_list'].append(vurl)
+
+        #     # yield InfoTuple(ep_id,cid,v_split_list,titleFormat,longTitle)
+        #     yield d
+
+    def create_one_info(self,v):
+        d={}
+        d['cid'] = v.get('cid',None)
+        d['titleFormat'] = v.get('titleFormat',None)
+        d['longTitle'] = v.get('longTitle',None)
+        d['ep_id'] = v.get('id',None)
+        self.analyze_ep_id(d['ep_id'])
+        d['v_split_list'] = []
+
+        for i in range(self.split_num):
+            vurl = self.form_url(d['cid'], i+1, self.quality)
+            d['v_split_list'].append(vurl)
+        return d
+
 
     def analyze_ep_id(self, ep_id):
         # url qn 为品质, 抓出来的 数据 >= qn
