@@ -8,3 +8,12 @@ videourl = 'https://112-13-78-5.ksyungslb.com/upos-sz-mirrorks32u.acgvideo.com/u
 headers = {
         'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.90 Safari/537.36'
     }
+
+
+quality_dict = {
+    '1080+':112,
+    '1080':80,
+    '720':64,
+    '480':32,
+    '320':16,
+}

@@ -216,7 +216,7 @@ class SingleDownloader(BaseDownloader):
             raise e
         
         qualityList = data['data']['accept_quality']
-        if self.quality is None or self.quality not in qualityList:
+        if self.quality is None or int(self.quality) not in qualityList:
             self.quality = qualityList[0]
 
         try:
@@ -225,8 +225,6 @@ class SingleDownloader(BaseDownloader):
             split_num = 1
         
         
-
-
         g = re.search(r'<title.*?>(.*?)</title>', content)
         # g2 = re.search(r'"baseUrl".*?/(\d*?)-', content)
         g2 = re.search(r'"(?:base)?[U,u]rl".*?/(\d*?)-',content)
