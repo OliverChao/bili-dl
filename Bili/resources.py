@@ -93,7 +93,7 @@ class GatherDownloader(BaseDownloader):
         vlist = self._vurl_info()
 
         with futures.ThreadPoolExecutor(max_workers=20) as exectutor:
-            g = exectutor.map(self.create_one_info, vlist)
+            g = exectutor.map(self._generate_one_info, vlist)
 
         return g
         
@@ -113,7 +113,7 @@ class GatherDownloader(BaseDownloader):
         #     # yield InfoTuple(ep_id,cid,v_split_list,titleFormat,longTitle)
         #     yield d
 
-    def create_one_info(self,v):
+    def _generate_one_info(self,v):
         d={}
         d['cid'] = v.get('cid',None)
         d['titleFormat'] = v.get('titleFormat',None)
@@ -216,3 +216,4 @@ class SingleDownloader(BaseDownloader):
         with open(file_name, 'w') as f:
             f.write(json.dumps(info))
         return True
+
